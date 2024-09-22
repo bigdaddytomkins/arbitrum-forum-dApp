@@ -8,7 +8,7 @@ contract ForumTest is Test {
     Forum public forum;
     Forum.Post public post;
 
-    // Part A - Test Create Post Function
+  // Part A - Test Create Post Function
     function setUp() public {
         // create dummy address. this will "prank" for a msg.sender address
         vm.prank(address(1));
@@ -18,6 +18,7 @@ contract ForumTest is Test {
         forum = new Forum();
         forum.createPost(_title, _description, _spoil);
     }
+
      // Part B - Test Create Poll Function
     function testCreatePoll() public {
         forum.createPoll(1, "Enjoying the quest so far?", "Yes", "No");
@@ -25,7 +26,7 @@ contract ForumTest is Test {
         assertEq(_poll.question, "Enjoying the quest so far?");
     }
 
-     //Part C - Test Get Post Function
+  //Part C - Test Get Post Function
     function testGetPost() public view {
         Forum.Post memory _post = forum.getPost(1);
         assertEq(_post.title, "StackUp");
